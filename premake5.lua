@@ -7,7 +7,7 @@ project "Snake"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
 
-   files { "src/**.h", "src/**.cpp" }
+   files { "main.cpp" }
    
    -- INCLUDES
    includedirs
