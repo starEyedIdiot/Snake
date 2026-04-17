@@ -1,9 +1,8 @@
 workspace "Snake"
    configurations { "Debug", "Release" }
-   	architecture "x64"
+	architecture "x64"
 
 project "Snake"
-   kind "ConsoleApp"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
 
@@ -22,14 +21,20 @@ project "Snake"
    }
    links 
    {
-		"raylib",
-		"winmm"
+		"raylib"
 	}
 
+	filter "system:windows" 
+		links "winmm"
+		filter "configurations:Release"
+			linkoptions { "/ENTRY:mainCRTStartup" }
+
    filter "configurations:Debug"
-      defines { "DEBUG" }
-      symbols "On"
+	  defines { "DEBUG" }
+	  kind "ConsoleApp"
+	  symbols "On"
 
    filter "configurations:Release"
-      defines { "NDEBUG" }
-      optimize "On"
+	  defines { "NDEBUG" }
+	  kind "WindowedApp"
+	  optimize "On"
