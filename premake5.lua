@@ -9,20 +9,15 @@ project "Snake"
    files { "main.cpp" }
    
    -- INCLUDES
-   includedirs
-   {
-		"ext/raylib/include"
+   includedirs {
+		"raylib/src"
    }
    
-   -- LINKING
-   libdirs
-   {
-		"ext/raylib/lib"
-   }
-   links 
-   {
+   -- LINKS
+   links {
 		"raylib"
-	}
+   }
+   
 
 	filter "system:windows" 
 		links "winmm"
